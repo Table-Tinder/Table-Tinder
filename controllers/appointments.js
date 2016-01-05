@@ -17,3 +17,14 @@ module.exports.appointmentList = function(req, res){
     sendJSON(res, 200, appointments);
   });
 };
+
+module.exports.appointmentFind = function(req, res){
+  Appointment.findById(req.body.id, function(err, appointment){
+    if (err){
+      console.log("There was an error of: " + err);
+      sendJSON(res, 404, err);
+    }
+    console.log("success");
+    sendJSON(res, 200, appointment);
+  });
+}
