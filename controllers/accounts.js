@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Diner = mongoose.model('Diner');
+var Account = mongoose.model('Account');
 
 // send status code and data as json
 var sendJSON = function(res, status, content) {
