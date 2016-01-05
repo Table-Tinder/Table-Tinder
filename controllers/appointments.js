@@ -28,3 +28,20 @@ module.exports.appointmentFind = function(req, res){
     sendJSON(res, 200, appointment);
   });
 }
+
+module.exports.appointmentCreate = function(req, res){
+  var newAppointment = {
+    attendees: req.body.attendees,
+    minAttendees: req.body.minAttendees,
+    maxAttendees: req.body.maxAttendees,
+    location: [parseFloat(req.body.lng), parseFloat(req.body.lat)],
+    restaurant: req.body.restaurant,
+    date: req.body.date
+  };
+  if (err){
+    console.log("There was an error of: " + err);
+    sendJSON(res, 404, err);
+  }
+  console.log("success");
+  sendJSON(res, 200, newAppointment)
+}

@@ -6,4 +6,5 @@ var ctrlAppointments = require('../controllers/appointments')
 /* GET all appointments. */
 router.get('/appointments', ctrlAppointments.appointmentList);
 router.get('/appointments/:id', ctrlAppointments.appointmentFind);
+router.post('/appointments', ctrlAppointments.appointmentCreate);
 module.exports = router;
