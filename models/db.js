@@ -49,4 +49,4 @@ process.on('SIGTERM', function() {
 
 // require models
 require('./appointments');
-require('./diners');
+require('./Account');
