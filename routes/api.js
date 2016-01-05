@@ -4,8 +4,6 @@ var ctrlDiners = require('../controllers/diners');
 var ctrlAppoinments = require('../controllers/appointments')
 
 /* GET all appointments. */
-router.get('/appointments', function(req, res) {
-
-});
+router.get('/appointments', ctrlAppoinments.appointmentList);
 
 module.exports = router;
