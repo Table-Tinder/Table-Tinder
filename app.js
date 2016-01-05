@@ -10,7 +10,6 @@ var LocalStrategy = require('passport-local').Strategy;
 require('./models/db');
 
 var routes = require('./routes/index');
-var users = require('./routes/diners');
 var api = require('./routes/api');
 var accounts = require('./routes/account');
 
@@ -49,7 +48,6 @@ app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
 app.use('/api', api);
 app.use('/account', accounts);
 // catch 404 and forward to error handler
