@@ -5,10 +5,34 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+require('./models/db');
+
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var api = require('./routes/api');
+var accounts = require('./routes/account');
 
 var app = express();
+// set up express sessions
+app.use(require('express-session')({
+  secret: 'this is a secret session',
+  resave: false,
+  saveUnitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+// end session setup
+
+// configure passport
+var Account = require('./models/Account');
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
+// end configure passport
+
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,8 +48,8 @@ app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
-
+app.use('/api', api);
+app.use('/account', accounts);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
