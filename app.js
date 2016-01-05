@@ -10,13 +10,14 @@ var LocalStrategy = require('passport-local').Strategy;
 require('./models/db');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var users = require('./routes/diners');
 var api = require('./routes/api');
 var accounts = require('./routes/account');
 
 var app = express();
 // set up express sessions
 app.use(require('express-session')({
+  secret: 'this is a secret session',
   resave: false,
   saveUnitialized: false
 }));
