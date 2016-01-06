@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row page-header">
     <div class="col-lg-12">
-      <h1>Appt Name</h1>
+      <h1 id="apptName"></h1>
     </div>
   </div>
   <div class="row">
@@ -53,6 +53,7 @@
         $('#attendees').append("<li>" + data.attendees[i] + "</li>");
       }
       $('#map').append("<img src='http://maps.googleapis.com/maps/api/staticmap?center=" + data.coords[1]+ ","+ data.coords[0] + "&amp;zoom=17&amp;size=425x375&amp;sensor=false&amp;markers=" + data.coords[1]+ ","+ data.coords[0] + "&amp;scale=2' class='img-responsive img-rounded'>");
+      $('#apptName').append(data.name);
     })
     .fail(function() {
       console.log("error");
