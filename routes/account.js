@@ -46,8 +46,16 @@ router.post('/login',
   passport.authenticate('local', { failureRedirect: '/error' }),
   function(req, res) {
     var session = req.session;
-    session.username = req.body.username;
-    res.redirect('../account/user/:id');
+    Account.findOne({username: req.body.username}, function(err, user){
+      if (err){
+        console.log(err);
+      } else {
+        session.currentUserID = user._id;
+        console.log(user._id);
+        res.redirect('../account/user/' + session.currentUserID);
+      }
+
+    });
   }
 );
 

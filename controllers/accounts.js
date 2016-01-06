@@ -10,32 +10,30 @@ var sendJSON = function(res, status, content) {
 // <<<<<<< HEAD
 // module.exports.dinerList = function(req, res){
 // =======
-// module.exports.accountList = function(req, res){
-// >>>>>>> upstream/master
-//   Account.find(function(err, accounts){
-//     if (err){
-//       console.log("there was an error of: " + err);
-//       sendJSON(res, 404, err);
-//     }
-//     console.log("success");
-//     sendJSON(res, 200, accounts);
-//   });
-// };
+module.exports.accountList = function(req, res){
+  Account.find(function(err, accounts){
+    if (err){
+      console.log("there was an error of: " + err);
+      sendJSON(res, 404, err);
+    }
+    console.log("success");
+    sendJSON(res, 200, accounts);
+  });
+};
 //
 // <<<<<<< HEAD
 // module.exports.dinerFind = function(req, res){
 // =======
-// module.exports.accountFind = function(req, res){
-// >>>>>>> upstream/master
-//   Account.findById(req.params.id, function(err, account){
-//     if (err){
-//       console.log("There was an error of: " + err);
-//       sendJSON(res, 404, err);
-//     }
-//     console.log("success");
-//     sendJSON(res, 200, account);
-//   });
-// }
+module.exports.accountFind = function(req, res){
+  Account.findById(req.params.id, function(err, account){
+    if (err){
+      console.log("There was an error of: " + err);
+      sendJSON(res, 404, err);
+    }
+    console.log("success");
+    sendJSON(res, 200, account);
+  });
+}
 // <<<<<<< HEAD
 // =======
 
