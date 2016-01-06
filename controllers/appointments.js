@@ -53,7 +53,7 @@ module.exports.appointmentCreate = function(req, res){
 
 
 module.exports.appointmentDelete = function(req, res){
-  Appointment.remove(req.body.id, function(err){
+  Appointment.findByIdAndRemove(req.params.id, function(err){
     if (err){
       console.log("Error deleting item: " + err);
       sendJSON(res, 400, err);
@@ -61,5 +61,16 @@ module.exports.appointmentDelete = function(req, res){
       console.log("Deleted item");
       sendJSON(res, 200, {message: "Item removed"});
     }
+  })
+}
+
+module.exports.appointmentUpdate = function(req, res){
+  Appointment.findByIdAndUpdate(req.params.id, req.body, function(err, appointment){
+    if (err){
+      console.log("Error updating item: " + err);
+      sendJSON(res, 400, err);
+    }
+    console.log("Item updated");
+    sendJSON(res, 200, appointment);
   })
 }
