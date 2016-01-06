@@ -10,12 +10,13 @@ var Account = new Schema({
   password: {
     type: String,
     required: true
-  },
-  email: {
-    type: String,
-    required: true
-  },
-  appointments: [String]
+  }
+  // ,
+  // email: {
+  //   type: String,
+  //   required: true
+  // },
+  // appointments: [String]
 });
 
 Account.plugin(passportLocalMongoose);
