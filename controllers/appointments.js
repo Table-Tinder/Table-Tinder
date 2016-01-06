@@ -35,12 +35,12 @@ module.exports.appointmentCreate = function(req, res){
     minAttendees: parseInt(req.body.minAttendees),
     maxAttendees: parseInt(req.body.maxAttendees),
     restaurant: req.body.restaurant,
-    coords: [-87.618381, 41.885937]
+    coords: [parseFloat(req.body.lng), parseFloat(req.body.lat)]
   };
   console.log(newAppointment);
   console.log(req.body);
   console.log("success");
-  Appointment.create(req.body, function(err, appointment){
+  Appointment.create(newAppointment, function(err, appointment){
     if (err){
       console.log("Appointment creation error of: " + err);
       sendJSON(res, 400, err);
