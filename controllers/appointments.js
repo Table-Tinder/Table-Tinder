@@ -19,7 +19,7 @@ module.exports.appointmentList = function(req, res){
 };
 
 module.exports.appointmentFind = function(req, res){
-  Appointment.findById(req.body.id, function(err, appointment){
+  Appointment.findById(req.params.id, function(err, appointment){
     if (err){
       console.log("There was an error of: " + err);
       sendJSON(res, 404, err);
@@ -31,17 +31,35 @@ module.exports.appointmentFind = function(req, res){
 
 module.exports.appointmentCreate = function(req, res){
   var newAppointment = {
-    attendees: req.body.attendees,
-    minAttendees: req.body.minAttendees,
-    maxAttendees: req.body.maxAttendees,
-    location: [parseFloat(req.body.lng), parseFloat(req.body.lat)],
+    attendees: [req.body.attendees],
+    minAttendees: parseInt(req.body.minAttendees),
+    maxAttendees: parseInt(req.body.maxAttendees),
     restaurant: req.body.restaurant,
-    date: req.body.date
+    coords: [-87.618381, 41.885937]
   };
-  if (err){
-    console.log("There was an error of: " + err);
-    sendJSON(res, 404, err);
-  }
+  console.log(newAppointment);
+  console.log(req.body);
   console.log("success");
-  sendJSON(res, 200, newAppointment)
+  Appointment.create(req.body, function(err, appointment){
+    if (err){
+      console.log("Appointment creation error of: " + err);
+      sendJSON(res, 400, err);
+    } else {
+      console.log("Appointment creation success");
+      sendJSON(res, 200, appointment);
+    }
+  });
+}
+
+
+module.exports.appointmentDelete = function(req, res){
+  Appointment.remove(req.body.id, function(err){
+    if (err){
+      console.log("Error deleting item: " + err);
+      sendJSON(res, 400, err);
+    } else {
+      console.log("Deleted item");
+      sendJSON(res, 200, {message: "Item removed"});
+    }
+  })
 }
