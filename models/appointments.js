@@ -3,14 +3,14 @@ var mongoose = require('mongoose');
 var appointmentSchema = new mongoose.Schema({
   attendees:{
     type: [String],
-    required: true
+    // required: true
   },
   minAttendees: {
     type: Number,
-    required: true
+    // required: true
   },
   maxAttendees: Number,
-  location: {
+  coords: {
     type: [Number],
     index: '2dsphere'
   },
