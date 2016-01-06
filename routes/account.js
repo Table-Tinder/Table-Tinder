@@ -43,6 +43,7 @@ router.post('/register', function(req, res) {
 
 router.get('/login', function(req, res) {
   res.render('login', { user: req.user });
+
 });
 
 // router.post('/login',
@@ -56,10 +57,13 @@ router.post('/login',
     // var session = req.session;
     // console.log(req.body);
     // session.username = req.body.username;
+    // res.status(200).send('username is: ' + user.username);
 
 
-    // res.redirect('/account');
-    res.redirect('/');
+    ///TEST LINE BELOW
+
+    res.render('index', { user: req.body.username});
+    // res.redirect('/');
   }
 );
 
