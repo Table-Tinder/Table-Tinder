@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
 
 var appointmentSchema = new mongoose.Schema({
+  name:{
+    type: String,
+    // required: true
+  },
   attendees:{
     type: [String],
     // required: true

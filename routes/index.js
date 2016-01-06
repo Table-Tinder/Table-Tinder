@@ -10,5 +10,9 @@ router.get('/appointments', function(req, res, next) {
   res.render('appointments', { title: 'Appointments' });
 });
 
+router.get('/appointments/:id', function(req, res, next){
+  res.render('single', { title: 'Appointment', appointmentID: req.params.id});
+});
+
 
 module.exports = router;
