@@ -1,13 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var ctrlDiners = require('../controllers/accounts');
+var ctrlAccounts = require('../controllers/accounts');
 var ctrlAppointments = require('../controllers/appointments')
-
-/* GET all appointments. */
-// router.post('/appointments', function(req,res){
-//
-//   res.json({message: "yes"});
-// });
 
 
 router.get('/appointments', ctrlAppointments.appointmentList);
@@ -17,6 +11,16 @@ router.delete('/appointments/:id', ctrlAppointments.appointmentDelete);
 router.put('/appointments/:id', ctrlAppointments.appointmentUpdate);
 router.patch('/appointments/:id', ctrlAppointments.appointmentUpdate);
 
-router.get('/accounts', ctrlDiners.dinerList);
-router.get('/accounts/:id', ctrlDiners.dinerFind);
+// <<<<<<< HEAD
+// router.get('/accounts', ctrlDiners.dinerList);
+// router.get('/accounts/:id', ctrlDiners.dinerFind);
+// =======
+router.get('/accounts', ctrlAccounts.accountList);
+router.get('/accounts/:id', ctrlAccounts.accountFind);
+// router.post('/accounts', ctrlAccounts.accountCreate);
+router.delete('/accounts/:id', ctrlAccounts.accountDelete);
+router.put('/accounts/:id', ctrlAccounts.accountUpdate);
+router.patch('/accounts/:id', ctrlAccounts.accountUpdate);
+
+// >>>>>>> upstream/master
 module.exports = router;
