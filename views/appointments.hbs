@@ -1,0 +1,57 @@
+<script type="text/javascript">
+$(document).ready(function() {
+  $.ajax({
+    url: '/api/appointments',
+    type: 'GET',
+    dataType: 'json',
+  })
+  .done(function(data) {
+    console.log("success");
+    var restaurant = data.restaurant;
+    $('div').append(restaurant);
+  })
+  .fail(function() {
+    console.log("error");
+  })
+</script>
+
+<div class='apptTitle'>
+Appointments
+</div>
+<hr>
+<div class="col-md-6">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Restaurant Name</th>
+                <th>Attendees</th>
+                <th>Max Attendees</th>
+                <th>Min Attendees</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Ming Hin</td>
+                <td>Jan Bernabe</td>
+                <td>3</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Little Goat</td>
+                <td>Jan Bernabe</td>
+                <td>3</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Cantina 1910</td>
+                <td>Jan Bernabe</td>
+                <td>3</td>
+                <td>2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
