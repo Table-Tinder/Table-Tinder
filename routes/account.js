@@ -18,17 +18,18 @@ router.get('/register', function(req, res) {
 });
 
 router.post('/register', function(req, res) {
-  var username = req.body.username
+  var username = req.body.username;
+  var password = req.body.password;
+  // res.status(200).send('username is:' + username);
   Account.register(new Account({
-    username: username
+    username: username,
+    password: password
   }),
   req.body.password, function(error, account) {
       if (error) {
+        res.status(200).send(error);
         return res.render('register', { account: account });
       }
-      // var session = req.session;
-      // session.username = username;
-      // console.log(req.session)
       passport.authenticate('local')(req, res, function() {
         res.redirect('/');
       });
@@ -37,20 +38,16 @@ router.post('/register', function(req, res) {
 
 router.get('/login', function(req, res) {
   res.render('login', { user: req.user });
+
 });
 
-// router.post('/login',
-//   passport.authenticate('local'), function(req, res) {
-//   res.redirect('/');
-// });
-
 router.post('/login',
-  passport.authenticate('local', { failureRedirect: '/account' }),
+  passport.authenticate('local', { failureRedirect: '/error' }),
   function(req, res) {
-    // var session = req.session;
-    // console.log(req.body);
-    // session.username = req.body.username;
-    res.redirect('/account');
+    var session = req.session;
+    session.username = req.body.username;
+
+    res.render('index', { user: session.username});
   }
 );
 
