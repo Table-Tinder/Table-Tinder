@@ -18,7 +18,7 @@ var app = express();
 app.use(require('express-session')({
   secret: 'this is a secret session',
   resave: false,
-  saveUnitialized: false
+  saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
