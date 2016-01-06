@@ -18,9 +18,10 @@ router.get('/register', function(req, res) {
 });
 
 router.post('/register', function(req, res) {
+  var session = req.session;
+  session.username = req.body.username;
   var username = req.body.username;
   var password = req.body.password;
-  // res.status(200).send('username is:' + username);
   Account.register(new Account({
     username: username,
     password: password
@@ -31,7 +32,7 @@ router.post('/register', function(req, res) {
         return res.render('register', { account: account });
       }
       passport.authenticate('local')(req, res, function() {
-        res.redirect('/');
+        res.render('index', { user: session.username});
       });
   })
 });
@@ -45,11 +46,33 @@ router.post('/login',
   passport.authenticate('local', { failureRedirect: '/error' }),
   function(req, res) {
     var session = req.session;
-    session.username = req.body.username;
+    Account.findOne({username: req.body.username}, function(err, user){
+      if (err){
+        console.log(err);
+      } else {
+        session.currentUserID = user._id;
+        console.log(user._id);
+        res.redirect('../account/user/' + session.currentUserID);
+      }
 
-    res.render('index', { user: session.username});
+    });
   }
 );
+
+router.get('/user', function(req, res){
+  res.render('user', { user: req.user });
+});
+
+router.get('/user/:id', function(req, res){
+  Account.findById(req.user.id, function(err, user){
+    if (err) {
+      res.json(err);
+    }
+    else {
+      res.render('user', { user: req.user});
+    }
+  });
+});
 
 
 router.get('/leave', function(req, res) {
