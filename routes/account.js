@@ -18,6 +18,8 @@ router.get('/register', function(req, res) {
 });
 
 router.post('/register', function(req, res) {
+  var session = req.session;
+  session.username = req.body.username;
   var username = req.body.username;
   var password = req.body.password;
   // res.status(200).send('username is:' + username);
@@ -31,7 +33,8 @@ router.post('/register', function(req, res) {
         return res.render('register', { account: account });
       }
       passport.authenticate('local')(req, res, function() {
-        res.redirect('/');
+        res.render('index', { user: session.username});
+        // res.redirect('/');
       });
   })
 });
@@ -46,10 +49,28 @@ router.post('/login',
   function(req, res) {
     var session = req.session;
     session.username = req.body.username;
-
-    res.render('index', { user: session.username});
+    res.redirect('../account/user/:id');
+    // res.render('index', { user: session.username});
   }
 );
+
+router.get('/user', function(req, res){
+  res.render('user', { user: req.user });
+});
+
+router.get('/user/:id', function(req, res){
+  Account.findById(req.user.id, function(err, user){
+    if (err) {
+      res.json(err);
+    }
+    else {
+      res.render('user', { user: req.user});
+    }
+  });
+
+  // res.redirect('/');
+  // res.render('user', { message: 'worked!' });
+});
 
 
 router.get('/leave', function(req, res) {

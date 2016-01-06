@@ -16,4 +16,7 @@ router.post('/appointments', ctrlAppointments.appointmentCreate);
 router.delete('/appointments/:id', ctrlAppointments.appointmentDelete);
 router.put('/appointments/:id', ctrlAppointments.appointmentUpdate);
 router.patch('/appointments/:id', ctrlAppointments.appointmentUpdate);
+
+router.get('/accounts', ctrlDiners.dinerList);
+router.get('/accounts/:id', ctrlDiners.dinerFind);
 module.exports = router;
