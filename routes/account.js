@@ -27,14 +27,9 @@ router.post('/register', function(req, res) {
   }),
   req.body.password, function(error, account) {
       if (error) {
-        // console.log('there was an error');
         res.status(200).send(error);
-        // res.status(200).send(req.body.password);
         return res.render('register', { account: account });
       }
-      // var session = req.session;
-      // session.username = username;
-      // console.log(req.session)
       passport.authenticate('local')(req, res, function() {
         res.redirect('/');
       });
@@ -46,24 +41,13 @@ router.get('/login', function(req, res) {
 
 });
 
-// router.post('/login',
-//   passport.authenticate('local'), function(req, res) {
-//   res.redirect('/');
-// });
-
 router.post('/login',
   passport.authenticate('local', { failureRedirect: '/error' }),
   function(req, res) {
-    // var session = req.session;
-    // console.log(req.body);
-    // session.username = req.body.username;
-    // res.status(200).send('username is: ' + user.username);
+    var session = req.session;
+    session.username = req.body.username;
 
-
-    ///TEST LINE BELOW
-
-    res.render('index', { user: req.body.username});
-    // res.redirect('/');
+    res.render('index', { user: session.username});
   }
 );
 
