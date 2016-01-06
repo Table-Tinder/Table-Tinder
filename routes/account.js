@@ -22,7 +22,6 @@ router.post('/register', function(req, res) {
   session.username = req.body.username;
   var username = req.body.username;
   var password = req.body.password;
-  // res.status(200).send('username is:' + username);
   Account.register(new Account({
     username: username,
     password: password
@@ -34,7 +33,6 @@ router.post('/register', function(req, res) {
       }
       passport.authenticate('local')(req, res, function() {
         res.render('index', { user: session.username});
-        // res.redirect('/');
       });
   })
 });
@@ -50,7 +48,6 @@ router.post('/login',
     var session = req.session;
     session.username = req.body.username;
     res.redirect('../account/user/:id');
-    // res.render('index', { user: session.username});
   }
 );
 
@@ -67,9 +64,6 @@ router.get('/user/:id', function(req, res){
       res.render('user', { user: req.user});
     }
   });
-
-  // res.redirect('/');
-  // res.render('user', { message: 'worked!' });
 });
 
 
