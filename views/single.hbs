@@ -50,7 +50,7 @@
       $('#details').append("<p>Restaurant Name: " + data.restaurant + "</p>");
       $('#details').append("<p>Time: " + data.date + "</p>");
       for (var i in data.attendees) {
-        $('#attendees').append("<li>" + data.attendees[i] + "</li>");
+        $('#attendees').append("<p>" + data.attendees[i] + "</p>");
       }
       $('#map').append("<img src='http://maps.googleapis.com/maps/api/staticmap?center=" + data.coords[1]+ ","+ data.coords[0] + "&amp;zoom=17&amp;size=425x375&amp;sensor=false&amp;markers=" + data.coords[1]+ ","+ data.coords[0] + "&amp;scale=2' class='img-responsive img-rounded'>");
       $('#apptName').append(data.name);
