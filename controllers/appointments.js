@@ -76,7 +76,6 @@ module.exports.appointmentUpdate = function(req, res){
 }
 
 module.exports.showAppointment = function(req, res){
-  var theAppointment;
   Appointment.findById(req.params.id, function(err, appointment){
     if (err){
       console.log("There was an error of: " + err);
@@ -85,4 +84,8 @@ module.exports.showAppointment = function(req, res){
     res.render('single', appointment);
   });
 
+}
+
+module.exports.newAppointment = function(req, res){
+  res.render('newAppointment', {title: "create a new appointment"});
 }

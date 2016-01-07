@@ -15,6 +15,9 @@ router.get('/appointments', function(req, res, next) {
   res.render('appointments', { title: 'Appointments' });
 });
 
+router.get('/appointments/create', ctrlAppointments.newAppointment);
+
 router.get('/appointments/:id', ctrlAppointments.showAppointment);
+
 
 module.exports = router;
