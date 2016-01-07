@@ -9,6 +9,9 @@ var appointmentSchema = new mongoose.Schema({
     type: [String],
     // required: true
   },
+  attendeeIDs:{
+    type: [String]
+  },
   minAttendees: {
     type: Number,
     // required: true
