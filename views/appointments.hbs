@@ -43,14 +43,12 @@ $(document).ready(function() {
       view.onclick = function(){
         alert('view appointment');
       }
-      var attend = document.createElement("input");
-      attend.type = 'button';
-      attend.value = 'attend';
-      attend.id = 1;
-      attend.name = 'attend';
+      var attend = document.createElement("button");
+      attend.innerHTML = 'attend';
+      attend.id = data[i]._id;
       attend.onclick = function(){
-        alert('attend appointment');
-      }
+        attendButton(this.id);
+      };
 
       var tdAttend = document.createElement("tdAttend");
       tdAttend.appendChild(attend);
@@ -72,4 +70,23 @@ $(document).ready(function() {
     console.log("error");
   });
 });
+
+var attendButton = function(apptID){
+  $.ajax({
+    url: '/api/appointments/attend/' + apptID,
+    type: 'PUT',
+    dataType: 'json',
+  })
+  .done(function(data) {
+    console.log("success");
+    $("#" + apptID).hide(); 
+  })
+  .fail(function() {
+    console.log("error");
+  })
+  .always(function() {
+    console.log("complete");
+  });
+
+}
 </script>
