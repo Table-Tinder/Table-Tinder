@@ -13,10 +13,11 @@ var appointmentSchema = new mongoose.Schema({
     type: Number,
     // required: true
   },
-  maxAttendees: Number,
-  coords: {
-    type: [Number],
-    index: '2dsphere'
+  maxAttendees: {
+    type: Number,
+  // coords: {
+    // type: [Number]
+    // index: '2dsphere'
   },
   restaurant: String,
   date: {
