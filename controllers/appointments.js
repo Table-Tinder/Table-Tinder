@@ -35,7 +35,9 @@ module.exports.appointmentCreate = function(req, res){
     minAttendees: parseInt(req.body.minAttendees),
     maxAttendees: parseInt(req.body.maxAttendees),
     restaurant: req.body.restaurant,
-    coords: [parseFloat(req.body.lng), parseFloat(req.body.lat)]
+    coords: [parseFloat(req.body.lng), parseFloat(req.body.lat)],
+    attendees: [req.session.currentUsername],
+    attendeeIDs: [req.session.currentUserID]
   };
   console.log(newAppointment);
   console.log(req.body);
@@ -76,7 +78,6 @@ module.exports.appointmentUpdate = function(req, res){
 }
 
 module.exports.showAppointment = function(req, res){
-  var theAppointment;
   Appointment.findById(req.params.id, function(err, appointment){
     if (err){
       console.log("There was an error of: " + err);
@@ -85,4 +86,8 @@ module.exports.showAppointment = function(req, res){
     res.render('single', appointment);
   });
 
+}
+
+module.exports.newAppointment = function(req, res){
+  res.render('newAppointment', {title: "create a new appointment"});
 }
