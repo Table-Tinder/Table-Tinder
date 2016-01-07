@@ -20,6 +20,7 @@ Appointments
           </table>
         </div>
 <script type="text/javascript">
+// var router = express.Router();
 $(document).ready(function() {
   var username = document.getElementById('username').innerHTML;
   $.ajax({
@@ -33,7 +34,7 @@ $(document).ready(function() {
     var count = 0
     for (var i = 0; i < data.length; i++) {
 
-      var names = data[i].attendees[0].split(', ');
+      var names = data[i].attendees[0].split(',');
       for (var j = 0; j < names.length; j++) {
         if(names[j]== username || names[j]== (' ' + username)){
           count = count + 1
@@ -67,4 +68,6 @@ $(document).ready(function() {
     console.log("error");
   });
 });
+
+
 </script>
