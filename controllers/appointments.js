@@ -94,6 +94,7 @@ module.exports.newAppointment = function(req, res){
 
 module.exports.attendAppointment = function(req, res){
 
+
     console.log("success");
     console.log("params");
     console.log(req.params);
@@ -107,4 +108,5 @@ module.exports.attendAppointment = function(req, res){
       appointment.save();
       sendJSON(res, 200, {message: "updated successfully"})
     });
+
 }

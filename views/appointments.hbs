@@ -35,14 +35,17 @@ $(document).ready(function() {
       var maxAttendees = data[i].maxAttendees.toString();
       var minAttendees = data[i].minAttendees.toString();
       var tableRowEnd = $("</tr>");
-      var view = document.createElement("input");
-      view.type = 'button';
-      view.value = 'view';
-      view.id = 1;
-      view.name = 'view';
+
+      var view = document.createElement("button");
+      view.innerHTML = 'view';
+      view.id = data[i]._id;
+      var id = data[i]._id;
       view.onclick = function(){
-        alert('view appointment');
-      }
+        location.href='/appointments/'+this.id;
+      };
+      console.log('--' + view.id)
+      //568d3d6834af590a07a12c93
+
       var attend = document.createElement("button");
       attend.innerHTML = 'attend';
       attend.id = data[i]._id;
@@ -79,7 +82,7 @@ var attendButton = function(apptID){
   })
   .done(function(data) {
     console.log("success");
-    $("#" + apptID).hide(); 
+    $("#" + apptID).hide();
   })
   .fail(function() {
     console.log("error");
