@@ -16,6 +16,7 @@ router.get('/appointments', function(req, res, next) {
 });
 
 router.get('/appointments/create', ctrlAppointments.newAppointment);
+router.put('/appointments/removeMyself/:id', ctrlAppointments.removeMyself);
 router.get('/appointments/:id', ctrlAppointments.showAppointment);
 
 
