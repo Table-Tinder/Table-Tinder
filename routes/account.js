@@ -51,7 +51,9 @@ router.post('/login',
         console.log(err);
       } else {
         session.currentUserID = user._id;
+        session.currentUsername = user.username;
         console.log(user._id);
+        console.log(user.username);
         res.redirect('../account/user/' + session.currentUserID);
       }
 
