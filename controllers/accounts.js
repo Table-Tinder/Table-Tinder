@@ -7,9 +7,6 @@ var sendJSON = function(res, status, content) {
   res.json(content);
 };
 
-// <<<<<<< HEAD
-// module.exports.dinerList = function(req, res){
-// =======
 module.exports.accountList = function(req, res){
   Account.find(function(err, accounts){
     if (err){
@@ -20,10 +17,7 @@ module.exports.accountList = function(req, res){
     sendJSON(res, 200, accounts);
   });
 };
-//
-// <<<<<<< HEAD
-// module.exports.dinerFind = function(req, res){
-// =======
+
 module.exports.accountFind = function(req, res){
   Account.findById(req.params.id, function(err, account){
     if (err){
@@ -34,8 +28,6 @@ module.exports.accountFind = function(req, res){
     sendJSON(res, 200, account);
   });
 }
-// <<<<<<< HEAD
-// =======
 
 module.exports.accountDelete = function(req, res){
   Account.findByIdAndRemove(req.params.id, function(err){
@@ -59,4 +51,3 @@ module.exports.accountUpdate = function(req, res){
     sendJSON(res, 200, account);
   });
 }
-// >>>>>>> upstream/master

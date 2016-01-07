@@ -10,27 +10,11 @@ Appointments
                 <th>Attendees</th>
                 <th>Max Attendees</th>
                 <th>Min Attendees</th>
+                <th>View Appointment</th>
+                <th>Attend?</th>
               </tr>
             </thead>
             <tbody id="apptable">
-              <!-- <tr>
-                <td>Ming Hin</td>
-                <td>Jan Bernabe</td>
-                <td>3</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>Little Goat</td>
-                <td>Jan Bernabe</td>
-                <td>3</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>Cantina 1910</td>
-                <td>Jan Bernabe</td>
-                <td>3</td>
-                <td>2</td>
-              </tr> -->
             </tbody>
           </table>
         </div>
@@ -47,16 +31,40 @@ $(document).ready(function() {
     for (var i = 0; i < data.length; i++) {
       var restaurant = data[i].restaurant;
       var tableRow = $("<tr>");
+      var attendees = data[i].attendees.toString();
+      var maxAttendees = data[i].maxAttendees.toString();
+      var minAttendees = data[i].minAttendees.toString();
+      var tableRowEnd = $("</tr>");
+      var view = document.createElement("input");
+      view.type = 'button';
+      view.value = 'view';
+      view.id = 1;
+      view.name = 'view';
+      view.onclick = function(){
+        alert('view appointment');
+      }
+      var attend = document.createElement("input");
+      attend.type = 'button';
+      attend.value = 'attend';
+      attend.id = 1;
+      attend.name = 'attend';
+      attend.onclick = function(){
+        alert('attend appointment');
+      }
+
+      var tdAttend = document.createElement("tdAttend");
+      tdAttend.appendChild(attend);
+      var td = document.createElement("td");
+      td.appendChild(view);
       $('#apptable').append(tableRow);
       tableRow.append("<td>" + restaurant + "</td>");
-      var attendees = data[i].attendees.toString();
       tableRow.append("<td>" + attendees + "</td>");
-      var maxAttendees = data[i].maxAttendees.toString();
       tableRow.append("<td>" + maxAttendees + "</td>");
-      var minAttendees = data[i].minAttendees.toString();
       tableRow.append("<td>" + minAttendees + "</td>");
-      var tableRowEnd = $("</tr>");
+      tableRow.append(td);
+      tableRow.append(tdAttend);
       $('#apptable').append(tableRowEnd);
+
     }
 
   })
