@@ -13,7 +13,7 @@ Appointments
               </tr>
             </thead>
             <tbody id="apptable">
-              <tr>
+              <!-- <tr>
                 <td>Ming Hin</td>
                 <td>Jan Bernabe</td>
                 <td>3</td>
@@ -30,7 +30,7 @@ Appointments
                 <td>Jan Bernabe</td>
                 <td>3</td>
                 <td>2</td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
         </div>
@@ -51,6 +51,12 @@ $(document).ready(function() {
       tableRow.append("<td>" + restaurant + "</td>");
       var attendees = data[i].attendees.toString();
       tableRow.append("<td>" + attendees + "</td>");
+      var maxAttendees = data[i].maxAttendees.toString();
+      tableRow.append("<td>" + maxAttendees + "</td>");
+      var minAttendees = data[i].minAttendees.toString();
+      tableRow.append("<td>" + minAttendees + "</td>");
+      var tableRowEnd = $("</tr>");
+      $('#apptable').append(tableRowEnd);
     }
 
   })
