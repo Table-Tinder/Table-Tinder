@@ -94,7 +94,7 @@ module.exports.newAppointment = function(req, res){
 
 module.exports.attendAppointment = function(req, res){
 
-    console.log("success");
+    console.log("attendAppointment");
     console.log("params");
     console.log(req.params);
     console.log(req.params.id);
@@ -107,4 +107,25 @@ module.exports.attendAppointment = function(req, res){
       appointment.save();
       sendJSON(res, 200, {message: "updated successfully"})
     });
+}
+
+module.exports.removeMyself = function(req, res){
+  console.log("removeMyself running with id:");
+  console.log(req.params);
+  Appointment.findById(req.params.id, function(err, appointment){
+    if (err){
+      console.log("There was an error of: " + err);
+    }
+    var userID = req.session.currentUserID;
+    console.log(userID);
+    for (var i = 0; i < appointment.attendeeIDs.length; i++) {
+      if (appointment.attendeeIDs[i] == userID) {
+        appointment.attendeeIDs.splice(i,1);
+        appointment.attendees.splice(i,1);
+        appointment.save();
+        res.json({message: "removed"});
+      }
+    }
+    sendJSON(res, 400, {message: "you are not there"});
+  });
 }

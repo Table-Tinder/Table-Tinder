@@ -71,15 +71,18 @@ $(document).ready(function() {
   });
 });
 
+
+
 var attendButton = function(apptID){
   $.ajax({
     url: '/api/appointments/attend/' + apptID,
     type: 'PUT',
-    dataType: 'json',
+    dataType: 'json'
+
   })
   .done(function(data) {
     console.log("success");
-    $("#" + apptID).hide(); 
+    $("#" + apptID).hide();
   })
   .fail(function() {
     console.log("error");

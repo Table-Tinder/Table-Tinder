@@ -33,34 +33,32 @@ $(document).ready(function() {
     console.log(data);
     var count = 0
     for (var i = 0; i < data.length; i++) {
-
-      var names = data[i].attendees[0].split(',');
-      for (var j = 0; j < names.length; j++) {
-        if(names[j]== username || names[j]== (' ' + username)){
-          count = count + 1
-          var restaurant = data[i].restaurant;
-          var tableRow = $("<tr>");
-          var attendees = data[i].attendees.toString();
-          var max = data[i].maxAttendees;
-          var min = data[i].minAttendees;
-          var element = document.createElement("input");
-          element.className = 'appointmentClass'
-          element.id = count;
-          element.type = 'button';
-          element.name = 'name';
-          element.value = 'remove';
-          element.onclick = function (){
-            alert('removed appointment '+ this.id)
-            //  REMOVEFUNCTION(this.id);
-           };
-          $('#apptable').append(tableRow);
-          tableRow.append("<td>" + restaurant + "</td>");
-          tableRow.append("<td>" + attendees + "</td>");
-          tableRow.append("<td>" + max + "</td>");
-          tableRow.append("<td>" + min + "</td>");
-          tableRow.append(element);
+      if (data[i].attendees[0] != null){
+        var names = data[i].attendees[0].split(',');
+        for (var j = 0; j < names.length; j++) {
+          if(names[j]== username || names[j]== (' ' + username)){
+            count = count + 1
+            var restaurant = data[i].restaurant;
+            var tableRow = $("<tr>");
+            var attendees = data[i].attendees.toString();
+            var max = data[i].maxAttendees;
+            var min = data[i].minAttendees;
+            var element = document.createElement("button");
+            element.className = 'appointmentClass'
+            element.id = data[i]._id;
+            element.innerHTML = 'remove';
+            element.onclick = function (){
+              removeMyself(this.id);
+             };
+            $('#apptable').append(tableRow);
+            tableRow.append("<td>" + restaurant + "</td>");
+            tableRow.append("<td>" + attendees + "</td>");
+            tableRow.append("<td>" + max + "</td>");
+            tableRow.append("<td>" + min + "</td>");
+            tableRow.append(element);
 
           }
+        }
       }
     }
   })
@@ -69,5 +67,22 @@ $(document).ready(function() {
   });
 });
 
+var removeMyself = function(appointmentID){
+  $.ajax({
+    url: '/appointments/removeMyself/' + appointmentID,
+    type: 'PUT',
+    dataType: 'json'
+  })
+  .done(function(data) {
+    console.log("success");
+    console.log(data);
+  })
+  .fail(function() {
+    console.log("error");
+  })
+  .always(function() {
+    console.log("complete");
+  });
 
+};
 </script>
