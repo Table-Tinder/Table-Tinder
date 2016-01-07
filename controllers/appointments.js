@@ -91,3 +91,13 @@ module.exports.showAppointment = function(req, res){
 module.exports.newAppointment = function(req, res){
   res.render('newAppointment', {title: "create a new appointment"});
 }
+
+module.exports.attendAppointment = function(req, res){
+  Appointment.findById(req.params.appointmentId, function(err, appointment){
+    if (err){
+      console.log(err);
+    }
+    console.log('success');
+    res.render('appointments', {})
+  })
+}
