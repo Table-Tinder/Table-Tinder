@@ -1,1 +1,69 @@
 <h1>wecome, {{user.username}}</h1>
+
+<div class='apptTitle'>
+Appointments
+</div>
+<hr>
+<div class="col-md-6">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Restaurant Name</th>
+                <th>Attendees</th>
+                <th>Max Attendees</th>
+                <th>Min Attendees</th>
+              </tr>
+            </thead>
+            <tbody id="apptable">
+              <!-- <tr>
+                <td>Ming Hin</td>
+                <td>Jan Bernabe</td>
+                <td>3</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>Little Goat</td>
+                <td>Jan Bernabe</td>
+                <td>3</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>Cantina 1910</td>
+                <td>Jan Bernabe</td>
+                <td>3</td>
+                <td>2</td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+<script type="text/javascript">
+$(document).ready(function() {
+  $.ajax({
+    url: '/api/appointments',
+    type: 'GET',
+    dataType: 'json',
+  })
+  .done(function(data) {
+    console.log("success");
+    console.log(data);
+    for (var i = 0; i < data.length; i++) {
+      // console.log(data[i].attendees[0]);
+      if(data[i].attendees[0]=='kevin'){
+        var restaurant = data[i].restaurant;
+        var tableRow = $("<tr>");
+        var attendees = data[i].attendees.toString();
+        var max = data[i].maxAttendees;
+        var min = data[i].minAttendees;
+        $('#apptable').append(tableRow);
+        tableRow.append("<td>" + restaurant + "</td>");
+        tableRow.append("<td>" + attendees + "</td>");
+        tableRow.append("<td>" + max + "</td>");
+        tableRow.append("<td>" + min + "</td>");
+        }
+      }
+  })
+  .fail(function() {
+    console.log("error");
+  });
+});
+</script>
