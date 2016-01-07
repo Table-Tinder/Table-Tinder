@@ -48,7 +48,7 @@ module.exports.appointmentCreate = function(req, res){
       sendJSON(res, 400, err);
     } else {
       console.log("Appointment creation success");
-      sendJSON(res, 200, appointment);
+      res.render('single', appointment);
     }
   });
 }
@@ -93,11 +93,20 @@ module.exports.newAppointment = function(req, res){
 }
 
 module.exports.attendAppointment = function(req, res){
-  Appointment.findById(req.params.appointmentId, function(err, appointment){
-    if (err){
-      console.log(err);
-    }
-    console.log('success');
-    res.render('appointments', {})
-  })
+
+
+    console.log("success");
+    console.log("params");
+    console.log(req.params);
+    console.log(req.params.id);
+    Appointment.findById(req.params.id, function(err, appointment){
+      if (err){
+        console.log("There was an error of: " + err);
+      }
+      appointment.attendees.push(req.session.currentUsername);
+      appointment.attendeeIDs.push(req.session.currentUserID);
+      appointment.save();
+      sendJSON(res, 200, {message: "updated successfully"})
+    });
+
 }

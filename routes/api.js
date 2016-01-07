@@ -10,7 +10,7 @@ router.post('/appointments', ctrlAppointments.appointmentCreate);
 router.delete('/appointments/:id', ctrlAppointments.appointmentDelete);
 router.put('/appointments/:id', ctrlAppointments.appointmentUpdate);
 router.patch('/appointments/:id', ctrlAppointments.appointmentUpdate);
-
+router.put('/appointments/attend/:id', ctrlAppointments.attendAppointment);
 
 router.get('/accounts', ctrlAccounts.accountList);
 router.get('/accounts/:id', ctrlAccounts.accountFind);
