@@ -124,9 +124,9 @@ module.exports.removeMyself = function(req, res){
         appointment.attendeeIDs.splice(i,1);
         appointment.attendees.splice(i,1);
         appointment.save();
+        res.status(200);
         res.json({message: "removed"});
       }
     }
-    sendJSON(res, 400, {message: "you are not there"});
   });
 }
