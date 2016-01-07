@@ -74,3 +74,16 @@ module.exports.appointmentUpdate = function(req, res){
     sendJSON(res, 200, appointment);
   })
 }
+
+module.exports.showAppointment = function(req, res){
+  var theAppointment;
+  Appointment.findById(req.params.id, function(err, appointment){
+    if (err){
+      console.log("There was an error of: " + err);
+    }
+    console.log("success");
+    theAppointment = appointment;
+    console.log(theAppointment);
+  });
+  res.render('single', {title: 'Appointment', appointmentID: req.params.id, appt: theAppointment});
+}
