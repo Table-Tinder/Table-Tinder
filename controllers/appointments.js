@@ -35,7 +35,9 @@ module.exports.appointmentCreate = function(req, res){
     minAttendees: parseInt(req.body.minAttendees),
     maxAttendees: parseInt(req.body.maxAttendees),
     restaurant: req.body.restaurant,
-    coords: [parseFloat(req.body.lng), parseFloat(req.body.lat)]
+    coords: [parseFloat(req.body.lng), parseFloat(req.body.lat)],
+    attendees: [req.session.currentUsername],
+    attendeeIDs: [req.session.currentUserID]
   };
   console.log(newAppointment);
   console.log(req.body);

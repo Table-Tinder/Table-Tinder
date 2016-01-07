@@ -5,31 +5,35 @@
   </div>
   <div class="row">
     <div class="form-group">
-      <form class="form-horizontal">
+      <form class="form-horizontal" action="/api/appointments" method="post">
         <div class="form-group">
-          <div class="col-xs-12 col-sm-12">
+          <div class="col-xs-12">
             <label class="sr-only" for="name">Appointment Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Appointment Name">
+            <input type="text" class="form-control" name="name" placeholder="Appointment Name">
           </div>
           <div class="col-xs-12 col-sm-6">
             <label class="sr-only" for="minAttendees">Minimum attendees</label>
-            <input type="text" class="form-control" id="minAttendees" placeholder="Minimum attendees">
+            <input type="text" class="form-control" name="minAttendees" placeholder="Minimum attendees">
           </div>
           <div class="col-xs-12 col-sm-6">
             <label class="sr-only" for="minAttendees">Maximum attendees</label>
-            <input type="text" class="form-control" id="maxAttendees" placeholder="Maximum attendees">
+            <input type="text" class="form-control" name="maxAttendees" placeholder="Maximum attendees">
           </div>
           <div class="col-xs-12">
             <label class="sr-only" for="restaurant">Restaurant Name</label>
-            <input type="text" class="form-control" id="restaurant" placeholder="Restaurant Name">
+            <input type="text" class="form-control" name="restaurant" placeholder="Restaurant Name">
           </div>
           <div class="col-xs-12 col-sm-6">
             <label class="sr-only" for="lat">Latitude</label>
-            <input type="text" class="form-control" id="lat" placeholder="Latitude">
+            <input type="text" class="form-control" name="lat" placeholder="Latitude">
           </div>
           <div class="col-xs-12 col-sm-6">
             <label class="sr-only" for="lng">Longitude</label>
-            <input type="text" class="form-control" id="lng" placeholder="Longitude">
+            <input type="text" class="form-control" name="lng" placeholder="Longitude">
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <label class="sr-only" for="date">Date</label>
+            <input type="text" class="form-control" name="date" placeholder="Date">
           </div>
         </div>
         <button type="submit" class="btn btn-success">Create appointment</button>
