@@ -43,6 +43,7 @@ $(document).ready(function() {
             var max = data[i].maxAttendees;
             var min = data[i].minAttendees;
             var element = document.createElement("button");
+            var removeBtn = document.createElement('td');
             element.className = 'appointmentClass'
             element.id = data[i]._id;
             element.innerHTML = 'remove';
@@ -54,7 +55,8 @@ $(document).ready(function() {
             tableRow.append("<td>" + attendees + "</td>");
             tableRow.append("<td>" + max + "</td>");
             tableRow.append("<td>" + min + "</td>");
-            tableRow.append(element);
+            removeBtn.appendChild(element);
+            tableRow.append(removeBtn);
 
           }
         }
