@@ -34,7 +34,8 @@ $(document).ready(function() {
     var count = 0
     for (var i = 0; i < data.length; i++) {
       if (data[i].attendees[0] != null){
-        var names = data[i].attendees[0].split(',');
+        var names = data[i].attendees;
+        console.log(names);
         for (var j = 0; j < names.length; j++) {
           if(names[j]== username || names[j]== (' ' + username)){
             count = count + 1
