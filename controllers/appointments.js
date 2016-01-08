@@ -31,6 +31,7 @@ module.exports.appointmentFind = function(req, res){
 
 module.exports.appointmentCreate = function(req, res){
   var newAppointment = {
+    name: req.body.name,
     attendees: [req.body.attendees],
     minAttendees: parseInt(req.body.minAttendees),
     maxAttendees: parseInt(req.body.maxAttendees),
