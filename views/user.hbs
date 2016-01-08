@@ -36,7 +36,7 @@ $(document).ready(function() {
       if (data[i].attendees[0] != null){
         var names = data[i].attendees[0].split(',');
         for (var j = 0; j < names.length; j++) {
-          if(names[j]== username || names[j]== (' ' + username)){
+          if(names[j]== username || names[j]== (',' + username)){
             count = count + 1
             var restaurant = data[i].restaurant;
             var tableRow = $("<tr>");
