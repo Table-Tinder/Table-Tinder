@@ -38,11 +38,9 @@ $(document).ready(function() {
 
       var view = document.createElement("button");
       view.innerHTML = 'view';
-      view.id = data[i]._id;
       view.className = data[i]._id;
-      var id = data[i]._id;
       view.onclick = function(){
-        location.href='/appointments/'+this.class;
+        location.href='/appointments/'+this.className;
       };
 
       var attend = document.createElement("button");
@@ -86,6 +84,7 @@ var attendButton = function(apptID){
   })
   .done(function(data) {
     console.log("success");
+    $("#" + apptID).hide();
     // $('.btnClass').eq(4).hide();
     // $("#" + apptID).eq(6).hide();
   })
