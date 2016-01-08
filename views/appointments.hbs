@@ -39,13 +39,11 @@ $(document).ready(function() {
       var view = document.createElement("button");
       view.innerHTML = 'view';
       view.id = data[i]._id;
-      view.className = 'btnClass';
+      view.className = data[i]._id;
       var id = data[i]._id;
       view.onclick = function(){
-        location.href='/appointments/'+this.id;
+        location.href='/appointments/'+this.class;
       };
-      console.log('--' + view.id)
-      //568d3d6834af590a07a12c93
 
       var attend = document.createElement("button");
       attend.innerHTML = 'attend';
