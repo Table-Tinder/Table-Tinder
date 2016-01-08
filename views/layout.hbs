@@ -38,10 +38,13 @@
             <button type="submit" class="btn btn-success">Sign in</button>
             </form>
             <form class="navbar-form navbar-right" action='/appointments' method='get'>
-            <button type="submit" class="btn btn-default">All Appointments</button>
+            <button type="submit" class="btn btn-default">View All Appointments</button>
             </form>
-            <form class="navbar-form navbar-right" action='/appointments' method='get'>
-            <button type="submit" class="btn btn-default">My Appointments</button>
+            <form class="navbar-form navbar-right" action='/account/user' method='get'>
+            <button type="submit" class="btn btn-default">View My Appointments</button>
+            </form>
+            <form class="navbar-form navbar-right" action='/appointments/create' method='get'>
+            <button type="submit" class="btn btn-default">Create an Appointment</button>
             </form>
         </div><!--/.navbar-collapse -->
       </div>
@@ -50,9 +53,11 @@
     {{{body}}}
     <!-- Main jumbotron for a primary marketing message or call to action -->
 
-      <footer>
-        <p>&copy; 2016 Tablemates, Inc.</p>
-      </footer>
+    <footer>
+      <p>&copy; 2016 Tablemates, Inc.</p>
+    </footer>
+
     </div> <!-- /container -->
   </body>
+
 </html>

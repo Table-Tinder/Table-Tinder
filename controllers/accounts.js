@@ -51,3 +51,7 @@ module.exports.accountUpdate = function(req, res){
     sendJSON(res, 200, account);
   });
 }
+
+module.exports.logout = function(req, res){
+  req.session.destroy();
+}

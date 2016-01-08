@@ -12,6 +12,7 @@ Appointments
                 <th>Attendees</th>
                 <th>Max Attendees</th>
                 <th>Min Attendees</th>
+                <th>view</th>
                 <th>remove?</th>
               </tr>
             </thead>
@@ -42,22 +43,37 @@ $(document).ready(function() {
             var attendees = data[i].attendees.toString();
             var max = data[i].maxAttendees;
             var min = data[i].minAttendees;
-            var element = document.createElement("button");
-            var removeBtn = document.createElement('td');
-            element.className = 'appointmentClass'
-            element.id = data[i]._id;
-            element.innerHTML = 'remove';
-            element.onclick = function (){
+            //  var removeBtn = document.createElement('td');
+
+             var remove = document.createElement("button");
+             remove.className = 'appointmentClass'
+             remove.id = data[i]._id;
+             remove.innerHTML = 'remove';
+             remove.onclick = function (){
               removeMyself(this.id);
              };
+
+             var view = document.createElement("button");
+             view.innerHTML = 'view';
+             view.id = data[i]._id;
+             view.className = 'btnClass';
+             var id = data[i]._id;
+             view.onclick = function(){
+               location.href='/appointments/'+this.id;
+             };
+
+            var tdView = document.createElement('td');
+            tdView.appendChild(view);
+            var tdRemove = document.createElement('td');
+            tdRemove.appendChild(remove);
+
             $('#apptable').append(tableRow);
             tableRow.append("<td>" + restaurant + "</td>");
             tableRow.append("<td>" + attendees + "</td>");
             tableRow.append("<td>" + max + "</td>");
             tableRow.append("<td>" + min + "</td>");
-            removeBtn.appendChild(element);
-            tableRow.append(removeBtn);
-
+            tableRow.append(tdView);
+            tableRow.append(tdRemove);
           }
         }
       }
