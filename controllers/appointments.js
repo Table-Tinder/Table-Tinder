@@ -128,5 +128,10 @@ module.exports.removeMyself = function(req, res){
         res.json({message: "removed"});
       }
     }
+    res.json({message: "you were not found"});
   });
+}
+
+module.exports.myAppointments = function(req, res){
+  res.render('user', { user: req.user});
 }
