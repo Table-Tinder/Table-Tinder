@@ -1,6 +1,26 @@
-# Table-Tinder
-Find foodies near you
+# Tablemates
 
-User Stories: Table Tinder app
+##Technology
 
-Table Tinder is an innovative app that facilitates social and collaborative eating practices so that you never have to dine by yourself. The app is great for foodies who love to try new places but don’t want to eat alone.  The app is also great for those who want a family-style dining experience with a group of foodies.  The app works whether you want to dine with one person or a group of foodies.
+* HTML, CSS, JavaScript, jQuery, Bootstrap, Backbone, Express, Handlebars, jQuery, Mongoose, MongoDB, Nodemon, Passport, Underscore, Github, Google Draw
+
+* Wireframes -
+
+* ERD Diagram -
+
+* User Stories -
+
+* Live app -
+
+##Unsolved Problems
+
+* Social sharing
+* Login with Facebook, Google+, Etc.
+* External connectivity to Yelp, Foursquare, etc.
+* Real-time messaging
+* Split bill feature (Paypal, Square, etc.)
+* Filtering and searching appointments
+
+Jason Tham, Kevin Deutscher, Jan Christian Bernabe
+
+January 8, 2016
