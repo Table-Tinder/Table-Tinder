@@ -39,6 +39,7 @@ $(document).ready(function() {
       var view = document.createElement("button");
       view.innerHTML = 'view';
       view.id = data[i]._id;
+      view.className = 'btnClass';
       var id = data[i]._id;
       view.onclick = function(){
         location.href='/appointments/'+this.id;
@@ -49,6 +50,7 @@ $(document).ready(function() {
       var attend = document.createElement("button");
       attend.innerHTML = 'attend';
       attend.id = data[i]._id;
+      attend.className = 'btnClass';
       attend.onclick = function(){
         attendButton(this.id);
       };
@@ -77,6 +79,7 @@ $(document).ready(function() {
 
 
 var attendButton = function(apptID){
+  console.log('id::: ' + apptID)
   $.ajax({
     url: '/api/appointments/attend/' + apptID,
     type: 'PUT',
@@ -85,7 +88,8 @@ var attendButton = function(apptID){
   })
   .done(function(data) {
     console.log("success");
-    $("#" + apptID).hide();
+    // $('.btnClass').eq(4).hide();
+    $("#" + apptID).eq(1).hide();
   })
   .fail(function() {
     console.log("error");
