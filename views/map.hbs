@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="/stylesheets/map.css" media="screen" title="no title" charset="utf-8">
+<div class="container">
+  <div class="row page-header">
+    <h1>The Map</h1>
+  </div>
+
+  <div id="map">
+  </div>
+
+</div>
+
+<script type="text/javascript">
+
+var map;
+function initMap() {
+  // var mylat, mylang;
+  // navigator.geolocation.getCurrentPosition(function(position) {
+  // mylat = parseFloat(position.coords.latitude);
+  // mylang = parseFloat(position.coords.longitude);
+  // });
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 41.90278, lng: -87.628807},
+    zoom: 8
+  });
+};
+</script>
+<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=KEYGOESHERE&callback=initMap">
+</script>
