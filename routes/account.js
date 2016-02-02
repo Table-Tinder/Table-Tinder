@@ -3,6 +3,7 @@ var express = require('express');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var Account = require('../models/Account');
+var $ = require('../public/javascript/jquery');
 var router = express.Router();
 
 passport.use(new LocalStrategy(Account.authenticate()));
@@ -22,6 +23,18 @@ router.post('/register', function(req, res) {
   session.username = req.body.username;
   var username = req.body.username;
   var password = req.body.password;
+  $.ajax({
+    url: 'http://tablematesapi.azurewebsites.net/api/User',
+    type: 'POST',
+    dataType: 'json',
+    data: {username: 'username'}
+  })
+  .done(function(data) {
+    console.log("success, server responded with " + data);
+  })
+  .fail(function() {
+    console.log("error, couldn't post user account to tablematesapi");
+  })
   Account.register(new Account({
     username: username,
     password: password

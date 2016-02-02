@@ -21,7 +21,7 @@ Appointments
 <script type="text/javascript">
 $(document).ready(function() {
   $.ajax({
-    url: 'http://tablematesapi.azurewebsites.net/api/Appointment/',
+    url: 'http://newtablemates.azurewebsites.net/api/Appointment',
     type: 'GET',
     dataType: 'json',
 
@@ -41,7 +41,7 @@ $(document).ready(function() {
   // "Users": null
       var restaurant = data[i].RestaurantName;
       var tableRow = $("<tr>");
-      var attendees = data[i].Users.toString();
+      var attendees = "";
       var maxAttendees = data[i].MaxAttendees.toString();
       var minAttendees = data[i].MinAttendees.toString();
       var tableRowEnd = $("</tr>");
