@@ -15,7 +15,7 @@
       })
       .when('/appointment', {
         templateUrl: '/appointments/appointments.view.html',
-        controller: 'appointmentCtrl',
+        controller: 'appointmentsCtrl',
         controllerAs: 'vm'
       })
       .when('/appointment/:id', {
