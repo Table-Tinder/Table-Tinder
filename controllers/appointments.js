@@ -90,7 +90,7 @@ module.exports.showAppointment = function(req, res){
 }
 
 module.exports.newAppointment = function(req, res){
-  res.render('newAppointment', {title: "create a new appointment"});
+  res.render('newAppointment', {title: "create a new appointment", username: req.session.currentUsername, userid: req.session.currentUserID});
 }
 
 module.exports.attendAppointment = function(req, res){
