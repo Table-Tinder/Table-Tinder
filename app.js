@@ -40,7 +40,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 var appClientFiles = [
   'client/app.js',
-  'client/home/home.controller.js'
+  'client/home/home.controller.js',
+  'client/common/directives/navigation/navigation.directive.js'
 ];
 var uglified = uglifyJS.minify(appClientFiles, { compress: false});
 fs.writeFile('public/angular/tableMates.min.js', uglified.code, function(err){
