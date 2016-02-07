@@ -3,14 +3,19 @@
 
   function config ($routeProvider){
     $routeProvider
-      .when('/angular', {
-        templateUrl: 'home/home.view.html',
+      .when('/', {
+        templateUrl: '/home/home.view.html',
         controller: 'homeCtrl',
         controllerAs: 'vm'
       })
       .when('/about', {
         templateUrl: '/common/views/genericText.view.html',
         controller: 'aboutCtrl',
+        controllerAs: 'vm'
+      })
+      .when('/appointment', {
+        templateUrl: '/appointments/appointments.view.html',
+        controller: 'appointmentsCtrl',
         controllerAs: 'vm'
       })
       .when('/appointment/:id', {

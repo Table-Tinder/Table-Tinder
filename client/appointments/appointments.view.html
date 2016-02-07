@@ -1,0 +1,26 @@
+<navigation></navigation>
+<div class='apptTitle'>
+Appointments
+</div>
+<hr>
+<div class="col-md-6">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Restaurant Name</th>
+                <th>Attendees</th>
+                <th>Max Attendees</th>
+                <th>Min Attendees</th>
+                <th>View Appointment</th>
+                <th>Attend?</th>
+              </tr>
+            </thead>
+            <tbody id="apptable">
+            </tbody>
+          </table>
+</div>
+<div class="results">
+  <ul>
+    <li ng-repeat="appointment in vm.data.appointments">{{appointment.AppointmentName}}</li>
+  </ul>
+</div>
