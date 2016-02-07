@@ -1,5 +1,5 @@
 (function(){
-  angular.module('tableMates', ['ngRoute', 'ngSanitize', 'ui.bootstrap']);
+  angular.module('tableMates', ['ngRoute', 'ngSanitize']);
 
   function config ($routeProvider){
     $routeProvider
@@ -22,6 +22,6 @@
   }
 
   angular
-    .module('loc8rApp')
+    .module('tableMates')
     .config(['$routeProvider', config]);
 })();
