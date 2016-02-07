@@ -3,8 +3,8 @@
 
   function config ($routeProvider){
     $routeProvider
-      .when('/angular', {
-        templateUrl: 'home/home.view.html',
+      .when('/', {
+        templateUrl: '/home/home.view.html',
         controller: 'homeCtrl',
         controllerAs: 'vm'
       })

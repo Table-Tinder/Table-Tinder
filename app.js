@@ -10,7 +10,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 require('./models/db');
 
-var routes = require('./routes/index');
+// var routes = require('./routes/index');
 var api = require('./routes/api');
 var accounts = require('./routes/account');
 
@@ -39,7 +39,8 @@ passport.deserializeUser(Account.deserializeUser());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 var appClientFiles = [
-  'client/app.js'
+  'client/app.js',
+  'client/home/home.controller.js'
 ];
 var uglified = uglifyJS.minify(appClientFiles, { compress: false});
 fs.writeFile('public/angular/tableMates.min.js', uglified.code, function(err){
@@ -57,8 +58,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', routes);
+app.use(express.static(path.join(__dirname, 'client')));
+// app.use('/', routes);
 app.use('/api', api);
 app.use('/account', accounts);
 app.use(function(req, res){
