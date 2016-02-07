@@ -13,6 +13,11 @@
         controller: 'aboutCtrl',
         controllerAs: 'vm'
       })
+      .when('/appointment', {
+        templateUrl: '/appointments/appointments.view.html',
+        controller: 'appointmentCtrl',
+        controllerAs: 'vm'
+      })
       .when('/appointment/:id', {
         templateUrl: '/appointmentDetail/appointmentDetail.view.html',
         controller: 'appointmentDetailCtrl',
