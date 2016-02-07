@@ -18,34 +18,44 @@ Appointments
             </tbody>
           </table>
         </div>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(document).ready(function() {
   $.ajax({
-    url: '/api/appointments',
+    url: 'http://newtablemates.azurewebsites.net/api/Appointment',
     type: 'GET',
     dataType: 'json',
+
   })
   .done(function(data) {
     console.log("success");
     console.log(data);
     for (var i = 0; i < data.length; i++) {
-      var restaurant = data[i].restaurant;
+  //     "ID": 1,
+  // "Lat": 41.902874,
+  // "Lng": -87.6288,
+  // "MinAttendees": 1,
+  // "MaxAttendees": 4,
+  // "AppointmentName": "First Date",
+  // "RestaurantName": "Lou Malnatis",
+  // "AppointmentDate": "2016-01-30T14:00:00",
+  // "Users": null
+      var restaurant = data[i].RestaurantName;
       var tableRow = $("<tr>");
-      var attendees = data[i].attendees.toString();
-      var maxAttendees = data[i].maxAttendees.toString();
-      var minAttendees = data[i].minAttendees.toString();
+      var attendees = "";
+      var maxAttendees = data[i].MaxAttendees.toString();
+      var minAttendees = data[i].MinAttendees.toString();
       var tableRowEnd = $("</tr>");
 
       var view = document.createElement("button");
       view.innerHTML = 'view';
-      view.className = data[i]._id;
+      view.className = data[i].ID;
       view.onclick = function(){
         location.href='/appointments/'+this.className;
       };
 
       var attend = document.createElement("button");
       attend.innerHTML = 'attend';
-      attend.id = data[i]._id;
+      attend.id = data[i].ID;
       attend.className = 'btnClass';
       attend.onclick = function(){
         attendButton(this.id);
@@ -96,4 +106,4 @@ var attendButton = function(apptID){
   });
 
 }
-</script>
+</script> -->

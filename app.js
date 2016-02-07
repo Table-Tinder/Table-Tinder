@@ -4,12 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var uglifyJS = require('uglify-js');
+var fs = require('fs');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 require('./models/db');
 
-var routes = require('./routes/index');
+// var routes = require('./routes/index');
 var api = require('./routes/api');
 var accounts = require('./routes/account');
 
@@ -37,7 +38,21 @@ passport.deserializeUser(Account.deserializeUser());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
+var appClientFiles = [
+  'client/app.js',
+  'client/home/home.controller.js',
+  'client/common/directives/navigation/navigation.directive.js',
+  'client/appointments/appointments.controller.js',
+  'client/common/services/api.service.js'
+];
+var uglified = uglifyJS.minify(appClientFiles, { compress: false});
+fs.writeFile('public/angular/tableMates.min.js', uglified.code, function(err){
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('Script generated and saved: tableMates.min.js');
+  }
+});
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -46,10 +61,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', routes);
+app.use(express.static(path.join(__dirname, 'client')));
+// app.use('/', routes);
 app.use('/api', api);
 app.use('/account', accounts);
+app.use(function(req, res){
+  res.sendFile(path.join(__dirname, 'client', 'index.html'));
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
