@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="/stylesheets/newAppointment.css" media="screen" title="no title" charset="utf-8">
+<navigation></navigation>
+<div class="container">
+  <div class="row page-header">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="row">
+    <div class="form-group">
+      <form class="form-horizontal" action="http://newtablemates.azurewebsites.net/api/Appointment" method="post">
+        <div class="form-group">
+          <div class="col-xs-12">
+            <label class="sr-only" for="AppointmentName">Appointment Name</label>
+            <input type="text" class="form-control" name="AppointmentName" placeholder="Appointment Name">
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <label class="sr-only" for="MinAttendees">Minimum attendees</label>
+            <input type="text" class="form-control" name="MinAttendees" placeholder="Minimum attendees">
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <label class="sr-only" for="MaxAttendees">Maximum attendees</label>
+            <input type="text" class="form-control" name="MaxAttendees" placeholder="Maximum attendees">
+          </div>
+          <div class="col-xs-12">
+            <label class="sr-only" for="RestaurantName">Restaurant Name</label>
+            <input type="text" class="form-control" name="RestaurantName" placeholder="Restaurant Name">
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <label class="sr-only" for="Lat">Latitude</label>
+            <input type="text" class="form-control" name="Lat" placeholder="Latitude">
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <label class="sr-only" for="Lng">Longitude</label>
+            <input type="text" class="form-control" name="Lng" placeholder="Longitude">
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <label class="sr-only" for="AppointmentDate">Date</label>
+            <input type="text" class="form-control" name="AppointmentDate" placeholder="Date">
+            <input type="hidden" name="Users" value="{{username}}">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success">Create appointment</button>
+      </form>
+    </div>
+  </div>
+</div>

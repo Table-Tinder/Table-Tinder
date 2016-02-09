@@ -23,6 +23,11 @@
         controller: 'appointmentDetailCtrl',
         controllerAs: 'vm'
       })
+      .when('/create', {
+        templateUrl: '/appointmentCreate/appointmentCreate.view.html',
+        controller: 'appointmentCreateCtrl',
+        controllerAs: 'vm'
+      })
       .otherwise({redirectTo: '/'});
   }
 
