@@ -7,6 +7,7 @@ Appointments
           <table class="table table-striped">
             <thead>
               <tr>
+                <th>Appointment Name</th>
                 <th>Restaurant Name</th>
                 <th>Attendees</th>
                 <th>Max Attendees</th>
@@ -15,12 +16,14 @@ Appointments
                 <th>Attend?</th>
               </tr>
             </thead>
-            <tbody id="apptable">
+            <tbody id="apptable" ng-repeat="appointment in vm.data.appointments">
+              <td>{{appointment.AppointmentName}}</td>
+              <td>{{appointment.RestaurantName}}</td>
+              <td>{{appointment.Attendees}}</td>
+              <td>{{appointment.MaxAttendees}}</td>
+              <td>{{appointment.MinAttendees}}</td>
+              <td><a href="/#/appointment/{{appointment.ID}}"><button class="btn btn-default">View Appointment</button></a></td>
+              <td><button class="btn btn-default">Attend</button></td>
             </tbody>
           </table>
-</div>
-<div class="results">
-  <ul>
-    <li ng-repeat="appointment in vm.data.appointments">{{appointment.AppointmentName}}</li>
-  </ul>
 </div>
