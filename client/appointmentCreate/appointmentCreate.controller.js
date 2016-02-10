@@ -31,6 +31,7 @@
       })
         .success(function(data){
           console.log("it worked! you posted this data: \n" + data);
+          $location.path('/#/appointment');
         })
         .error(function(data){
           console.log("Something went wrong");

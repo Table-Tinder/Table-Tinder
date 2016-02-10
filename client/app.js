@@ -28,12 +28,18 @@
         controller: 'appointmentCreateCtrl',
         controllerAs: 'vm'
       })
+      .when('/register', {
+        templateUrl: '/auth/register/register.view.html',
+        controller: 'registerCtrl',
+        controllerAs: 'vm'
+      })
+      .when('/login', {
+        templateUrl: '/auth/login/login.view.html',
+        controller: 'loginCtrl',
+        controllerAs: 'vm'
+      })
       .otherwise({redirectTo: '/'});
 
-    // $httpProvider.defaults.headers.common = {};
-    // $httpProvider.defaults.headers.post = {};
-    // $httpProvider.defaults.headers.put = {};
-    // $httpProvider.defaults.headers.patch = {};
   }
 
   angular
