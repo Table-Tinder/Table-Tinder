@@ -39,19 +39,19 @@
     };
 
     register = function(user) {
-      return $http.post('/account/register', user).success(function(data){
+      return $http.post('/api/register', user).success(function(data){
         saveToken(data.token);
       });
     };
 
     login = function(user) {
-      return $http.post('/account/login', user).success(function(data) {
+      return $http.post('/api/login', user).success(function(data) {
         saveToken(data.token);
       });
     };
 
     logout = function() {
-      $window.localStorage.removeItem('loc8r-token');
+      $window.localStorage.removeItem('tm-token');
     };
 
     return {

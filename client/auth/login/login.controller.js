@@ -9,7 +9,7 @@
     var vm = this;
 
     vm.pageHeader = {
-      title: 'Sign in to Loc8r'
+      title: 'Sign in to TableMates'
     };
 
     vm.credentials = {
