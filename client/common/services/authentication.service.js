@@ -1,7 +1,7 @@
 (function () {
 
   angular
-    .module('Tablemates')
+    .module('tableMates')
     .service('authentication', authentication);
 
   authentication.$inject = ['$http', '$window'];
