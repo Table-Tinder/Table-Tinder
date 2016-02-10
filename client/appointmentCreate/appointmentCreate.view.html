@@ -35,7 +35,7 @@
           <div class="col-xs-12 col-sm-6">
             <label class="sr-only" for="AppointmentDate">Date</label>
             <input type="text" class="form-control" name="AppointmentDate" ng-model="vm.formData.AppointmentDate" placeholder="Date">
-            <input type="hidden" name="Users" value="{{username}}" ng-model="vm.formData.Attendee">
+            <input type="hidden" name="Users" value="{{vm.currentUser.name}}" ng-model="vm.formData.Attendee">
           </div>
         </div>
         <button type="submit" class="btn btn-success">Create appointment</button>
