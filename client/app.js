@@ -1,7 +1,7 @@
 (function(){
   angular.module('tableMates', ['ngRoute', 'ngSanitize']);
 
-  function config ($routeProvider){
+  function config ($routeProvider, $httpProvider){
     $routeProvider
       .when('/', {
         templateUrl: '/home/home.view.html',
@@ -18,15 +18,25 @@
         controller: 'appointmentsCtrl',
         controllerAs: 'vm'
       })
-      .when('/appointment/:id', {
+      .when('/appointment/:appointmentid', {
         templateUrl: '/appointmentDetail/appointmentDetail.view.html',
         controller: 'appointmentDetailCtrl',
         controllerAs: 'vm'
       })
+      .when('/create', {
+        templateUrl: '/appointmentCreate/appointmentCreate.view.html',
+        controller: 'appointmentCreateCtrl',
+        controllerAs: 'vm'
+      })
       .otherwise({redirectTo: '/'});
+
+    // $httpProvider.defaults.headers.common = {};
+    // $httpProvider.defaults.headers.post = {};
+    // $httpProvider.defaults.headers.put = {};
+    // $httpProvider.defaults.headers.patch = {};
   }
 
   angular
     .module('tableMates')
-    .config(['$routeProvider', config]);
+    .config(['$routeProvider', '$httpProvider', config]);
 })();

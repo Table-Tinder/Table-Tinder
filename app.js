@@ -43,6 +43,8 @@ var appClientFiles = [
   'client/home/home.controller.js',
   'client/common/directives/navigation/navigation.directive.js',
   'client/appointments/appointments.controller.js',
+  'client/appointmentDetail/appointmentDetail.controller.js',
+  'client/appointmentCreate/appointmentCreate.controller.js',
   'client/common/services/api.service.js'
 ];
 var uglified = uglifyJS.minify(appClientFiles, { compress: false});
