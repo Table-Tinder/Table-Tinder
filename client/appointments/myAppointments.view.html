@@ -20,7 +20,7 @@ Appointments
             <tbody id="apptable" ng-repeat="appointment in vm.data.appointments">
               <td>{{appointment.AppointmentName}}</td>
               <td>{{appointment.RestaurantName}}</td>
-              <td><span ng-repeat="attendee in appointment.Attendees">{{attendee.username}} </span></td>
+              <td><span ng-repeat="attendee in appointment.Attendees">{{attendee.username}}<br/> </span></td>
               <td>{{appointment.MaxAttendees}}</td>
               <td>{{appointment.MinAttendees}}</td>
               <td><a href="/#/appointment/{{appointment.ID}}"><button class="btn btn-default">View Appointment</button></a></td>

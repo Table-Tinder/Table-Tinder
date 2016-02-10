@@ -25,7 +25,9 @@
       .error(function (e) {
         console.log(e);
       });
-
+    vm.attend = function(username, appoinmentid){
+      api.attendAppointment(username, appointmentid);
+    }
   }
 
 })();

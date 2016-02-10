@@ -13,7 +13,8 @@
         var myAppArray = [];
         for (var i = 0; i < data.length; i++) {
           for (var attendee in data[i].Attendees) {
-            if (attendee.username == vm.currentUser.username) {
+            console.log(data[i].Attendees[attendee]);
+            if (data[i].Attendees[attendee].username == vm.currentUser.name) {
               myAppArray.push(data[i]);
             }
           }

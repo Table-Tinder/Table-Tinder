@@ -1,6 +1,6 @@
 <navigation></navigation>
 <div class='apptTitle'>
-Appointments
+Appointments for {{vm.currentUser.name}}
 </div>
 <hr>
 <div class="col-md-6">
@@ -23,7 +23,7 @@ Appointments
               <td>{{appointment.MaxAttendees}}</td>
               <td>{{appointment.MinAttendees}}</td>
               <td><a href="/#/appointment/{{appointment.ID}}"><button class="btn btn-default">View Appointment</button></a></td>
-              <td><button ng-show="{{appointment.canAttend}}" class="btn btn-default">Attend</button></td>
+              <td><button ng-show="{{appointment.canAttend}}" class="btn btn-default" ng-click="vm.attend({{vm.currentUser.name}} , {{appointment.ID}})">Attend</button></td>
             </tbody>
           </table>
 </div>
