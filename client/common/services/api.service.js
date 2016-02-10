@@ -14,8 +14,8 @@
     var createAppointment = function(data){
       return $http.post('http://newtablemates.azurewebsites.net/api/Appointment', data);
     };
-    var attendAppointment = function(username, appoinmentid){
-      return $http.put('http://newtablemates.azurewebsites.net/api/Appointment/Attend?id='+ appoinmentid + '&attendeeName=' + username);
+    var attendAppointment = function(username, appointmentid){
+      return $http.put('http://newtablemates.azurewebsites.net/api/Appointment/Attend?id='+ appointmentid + '&attendeeName=' + username);
       // http://newtablemates.azurewebsites.net/api/Appointment/Attend?id=1&attendeeName=testuser2
     };
     return {

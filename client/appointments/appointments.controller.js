@@ -4,8 +4,8 @@
     .module('tableMates')
     .controller('appointmentsCtrl', appointmentsCtrl);
 
-  appointmentsCtrl.$inject = ['$routeParams', 'api', 'authentication'];
-  function appointmentsCtrl($routeParams, api, authentication) {
+  appointmentsCtrl.$inject = ['$routeParams', 'api', 'authentication', '$location'];
+  function appointmentsCtrl($routeParams, api, authentication, $location) {
     var vm = this;
     vm.currentUser = authentication.currentUser();
     api.allAppointments()
@@ -14,7 +14,7 @@
       for (var i = 0; i < data.length; i++) {
         data[i].canAttend = true;
         for (var attendee in data[i].Attendees) {
-          if (attendee.username == vm.currentUser.username) {
+          if (data[i].Attendees[attendee].username == vm.currentUser.name) {
             data[i].canAttend = false;
           }
         }
@@ -25,8 +25,10 @@
       .error(function (e) {
         console.log(e);
       });
-    vm.attend = function(username, appoinmentid){
-      api.attendAppointment(username, appointmentid);
+    vm.attend = function(appointmentid){
+      console.log(appointmentid);
+      api.attendAppointment(vm.currentUser.name, appointmentid);
+      $location.path('/myAppointments');
     }
   }
 

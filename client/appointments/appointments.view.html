@@ -23,7 +23,7 @@ Appointments for {{vm.currentUser.name}}
               <td>{{appointment.MaxAttendees}}</td>
               <td>{{appointment.MinAttendees}}</td>
               <td><a href="/#/appointment/{{appointment.ID}}"><button class="btn btn-default">View Appointment</button></a></td>
-              <td><button ng-show="{{appointment.canAttend}}" class="btn btn-default" ng-click="vm.attend({{vm.currentUser.name}} , {{appointment.ID}})">Attend</button></td>
+              <td><button ng-show="{{appointment.canAttend}}" class="btn btn-default" ng-click="vm.attend(appointment.ID)">Attend</button></td>
             </tbody>
           </table>
 </div>
