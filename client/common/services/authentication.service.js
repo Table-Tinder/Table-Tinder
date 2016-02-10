@@ -39,6 +39,14 @@
     };
 
     register = function(user) {
+      var azureuser = {
+        username : user.name,
+        email : user.email
+      };
+      console.log(azureuser);
+      $http.post('http://newtablemates.azurewebsites.net/api/Attendee', azureuser).success(function(azuredata){
+        console.log("Posted to azure!");
+      });
       return $http.post('/api/register', user).success(function(data){
         saveToken(data.token);
       });
