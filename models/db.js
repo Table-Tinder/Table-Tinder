@@ -49,4 +49,5 @@ process.on('SIGTERM', function() {
 
 // require models
 require('./appointments');
-require('./Account');
+// require('./Account');
+require('./users');

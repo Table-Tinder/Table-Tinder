@@ -1,32 +1,23 @@
-<nav class="navbar navbar-inverse navbar-fixed-top topnav">
+<div class="navbar navbar-default navbar-fixed-top">
   <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        </button>
+    <div class="navbar-header"><a href="/#/" class="navbar-brand">TableMates</a>
+      <button type="button" data-toggle="collapse" data-target="#navbar-main" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <div class="navbar-left">
-        <form class="form-group navbar-left" action="/account/login" method="post">
-          <input type="text" name="username" placeholder="Username">
-          <input type="password" name="password" placeholder="Password">
-          <button type="submit" class="btn btn-success">Sign in</button>
-        </form>
-      </div>
-      <div class="navbar-right">
-        <div class="navbar-right">
-          <a href="#/appointment"><button class="btn btn-default">View All Appointments</button></a>
-        </div>
-        <div class="navbar-right">
-          <a href="#"><button class="btn btn-default">View My Appointments</button></a>
-        </div>
-        <div class="navbar-right">
-          <a href="#/create"><button class="btn btn-default">Create Appointment</button></a>
-        </div>
-      </div>
-    </div><!--/.navbar-collapse -->
+    <div id="navbar-main" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#/appointment">View All Appointments</a></li>
+        <li><a href="#/myAppointments">View My Appointments</a></li>
+        <li><a href="#/create">Create Appointment</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-hide="navvm.isLoggedIn"><a href="/#login/?page={{ navvm.currentPath }}">Sign in</a></li>
+        <li ng-show="navvm.isLoggedIn" class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown">{{ navvm.currentUser.name }} <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="" ng-click="navvm.logout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
-</nav>
+</div>

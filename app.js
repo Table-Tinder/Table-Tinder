@@ -1,3 +1,4 @@
+require('dotenv').load();
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -7,17 +8,17 @@ var bodyParser = require('body-parser');
 var uglifyJS = require('uglify-js');
 var fs = require('fs');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+// var LocalStrategy = require('passport-local').Strategy;
 require('./models/db');
-
+require('./config/passport.js');
 // var routes = require('./routes/index');
 var api = require('./routes/api');
-var accounts = require('./routes/account');
+// var accounts = require('./routes/account');
 
 var app = express();
 // set up express sessions
 app.use(require('express-session')({
-  secret: 'this is a secret session',
+  secret: process.env.PP_SECRET,
   resave: false,
   saveUninitialized: false
 }));
@@ -26,10 +27,10 @@ app.use(passport.session());
 // end session setup
 
 // configure passport
-var Account = require('./models/Account');
-passport.use(new LocalStrategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
+// var Account = require('./models/Account');
+// passport.use(new LocalStrategy(Account.authenticate()));
+// passport.serializeUser(Account.serializeUser());
+// passport.deserializeUser(Account.deserializeUser());
 // end configure passport
 
 
@@ -42,10 +43,15 @@ var appClientFiles = [
   'client/app.js',
   'client/home/home.controller.js',
   'client/common/directives/navigation/navigation.directive.js',
+  'client/common/directives/navigation/navigation.controller.js',
   'client/appointments/appointments.controller.js',
   'client/appointmentDetail/appointmentDetail.controller.js',
   'client/appointmentCreate/appointmentCreate.controller.js',
-  'client/common/services/api.service.js'
+  'client/appointments/myAppointments.controller.js',
+  'client/auth/login/login.controller.js',
+  'client/auth/register/register.controller.js',
+  'client/common/services/api.service.js',
+  'client/common/services/authentication.service.js'
 ];
 var uglified = uglifyJS.minify(appClientFiles, { compress: false});
 fs.writeFile('public/angular/tableMates.min.js', uglified.code, function(err){
@@ -66,7 +72,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'client')));
 // app.use('/', routes);
 app.use('/api', api);
-app.use('/account', accounts);
+// app.use('/account', accounts);
 app.use(function(req, res){
   res.sendFile(path.join(__dirname, 'client', 'index.html'));
 });

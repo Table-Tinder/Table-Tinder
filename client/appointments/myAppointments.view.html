@@ -1,29 +1,29 @@
 <navigation></navigation>
+<h1>Welcome, {{vm.currentUser.name}}</h1>
+
 <div class='apptTitle'>
-Appointments for {{vm.currentUser.name}}
+Appointments
 </div>
 <hr>
 <div class="col-md-6">
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>Appointment Name</th>
-                <th>Restaurant Name</th>
+                <th>AppointmentName</th>
+                <th>RestaurantName</th>
                 <th>Attendees</th>
                 <th>Max Attendees</th>
-                <th>Min Attendees</th>
-                <th>View Appointment</th>
-                <th>Attend?</th>
+                <th>MinAttendees</th>
+                <th>view</th>
               </tr>
             </thead>
             <tbody id="apptable" ng-repeat="appointment in vm.data.appointments">
               <td>{{appointment.AppointmentName}}</td>
               <td>{{appointment.RestaurantName}}</td>
-              <td><span ng-repeat="attendee in appointment.Attendees">{{attendee.username}} </span></td>
+              <td><span ng-repeat="attendee in appointment.Attendees">{{attendee.username}}<br/> </span></td>
               <td>{{appointment.MaxAttendees}}</td>
               <td>{{appointment.MinAttendees}}</td>
               <td><a href="/#/appointment/{{appointment.ID}}"><button class="btn btn-default">View Appointment</button></a></td>
-              <td><button ng-show="{{appointment.canAttend}}" class="btn btn-default" ng-click="vm.attend(appointment.ID)">Attend</button></td>
             </tbody>
           </table>
-</div>
+        </div>

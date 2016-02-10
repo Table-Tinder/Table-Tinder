@@ -4,9 +4,10 @@
     .module('tableMates')
     .controller('appointmentCreateCtrl', appointmentCreateCtrl);
 
-  appointmentCreateCtrl.$inject = ['api', '$location'];
-  function appointmentCreateCtrl(api, $location) {
+  appointmentCreateCtrl.$inject = ['api', '$location', 'authentication'];
+  function appointmentCreateCtrl(api, $location, authentication) {
     var vm = this;
+    vm.currentUser = authentication.currentUser();
     vm.submit = function () {
       vm.formError = "";
       if (!vm.formData.AppointmentName || !vm.formData.MinAttendees || !vm.formData.RestaurantName || !vm.formData.AppointmentDate || !vm.formData.Lat || !vm.formData.Lng) {
@@ -31,6 +32,7 @@
       })
         .success(function(data){
           console.log("it worked! you posted this data: \n" + data);
+          $location.path('/#/appointment');
         })
         .error(function(data){
           console.log("Something went wrong");
