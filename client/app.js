@@ -28,6 +28,11 @@
         controller: 'appointmentCreateCtrl',
         controllerAs: 'vm'
       })
+      .when('/myAppointments', {
+        templateUrl: '/appointments/myAppointments.view.html',
+        controller: 'myAppointmentsCtrl',
+        controllerAs: 'vm'
+      })
       .when('/register', {
         templateUrl: '/auth/register/register.view.html',
         controller: 'registerCtrl',

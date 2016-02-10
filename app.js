@@ -47,6 +47,7 @@ var appClientFiles = [
   'client/appointments/appointments.controller.js',
   'client/appointmentDetail/appointmentDetail.controller.js',
   'client/appointmentCreate/appointmentCreate.controller.js',
+  'client/appointments/myAppointments.controller.js',
   'client/auth/login/login.controller.js',
   'client/auth/register/register.controller.js',
   'client/common/services/api.service.js',

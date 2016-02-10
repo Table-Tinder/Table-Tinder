@@ -1,0 +1,29 @@
+<navigation></navigation>
+<h1>Welcome, {{vm.currentUser.name}}</h1>
+
+<div class='apptTitle'>
+Appointments
+</div>
+<hr>
+<div class="col-md-6">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>AppointmentName</th>
+                <th>RestaurantName</th>
+                <th>Attendees</th>
+                <th>Max Attendees</th>
+                <th>MinAttendees</th>
+                <th>view</th>
+              </tr>
+            </thead>
+            <tbody id="apptable" ng-repeat="appointment in vm.data.appointments">
+              <td>{{appointment.AppointmentName}}</td>
+              <td>{{appointment.RestaurantName}}</td>
+              <td ng-repeat="attendee in appointment.Attendees">{{attendee.username}}</td>
+              <td>{{appointment.MaxAttendees}}</td>
+              <td>{{appointment.MinAttendees}}</td>
+              <td><a href="/#/appointment/{{appointment.ID}}"><button class="btn btn-default">View Appointment</button></a></td>
+            </tbody>
+          </table>
+        </div>
