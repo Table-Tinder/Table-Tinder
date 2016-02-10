@@ -45,7 +45,10 @@ var appClientFiles = [
   'client/appointments/appointments.controller.js',
   'client/appointmentDetail/appointmentDetail.controller.js',
   'client/appointmentCreate/appointmentCreate.controller.js',
-  'client/common/services/api.service.js'
+  'client/auth/login/login.controller.js',
+  'client/auth/register/register.controller.js',
+  'client/common/services/api.service.js',
+  'client/common/services/authentication.service.js'
 ];
 var uglified = uglifyJS.minify(appClientFiles, { compress: false});
 fs.writeFile('public/angular/tableMates.min.js', uglified.code, function(err){
